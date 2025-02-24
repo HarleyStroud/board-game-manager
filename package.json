@@ -1,0 +1,24 @@
+{
+  "name": "board-game-manager",
+  "version": "1.0.0",
+  "description": "A web app prototype built using Node.js, Express, EJS, and MariaDB to manage and track board games and their sessions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarleyStroud/board-game-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarleyStroud/board-game-manager/issues"
+  },
+  "homepage": "https://github.com/HarleyStroud/board-game-manager#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
