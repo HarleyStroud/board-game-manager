@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const { getHomePage} = require('./routes/index');
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
@@ -9,9 +10,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // Routes
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Home Page' });
-});
+app.get('/', getHomePage);
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
