@@ -1,11 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-</head>
-<body>
-    <h1>Welcome to the Express + EJS App</h1>
-</body>
-</html>
+<%- include('partials/header.ejs') %>
+
+<div id="main_game_container">
+	<div id="main_header">
+		<h1>Board Game Manager</h1>
+	</div>
+	<div id="main_button_container">
+		<a href="/add-game" class="new-game-btn">Add New Game</a>
+		<button class="new-game-btn" id="random_game_btn">Pick Random Game</button>
+	</div>
+	<% if (gameData) { %>
+		<div class="game-card-container">
+			<div class="scroll-container">
+				<table id="game_table">
+					<thead>
+						<tr>
+							<th>Game</th>
+							<th>Minimuum Players</th>
+							<th>Maximum Players</th>
+							<th>Last Played</th>
+							<th>Times Played</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% gameData.forEach(entry => { %>
+							<tr class="game-row" data-id="<%= entry.game_id %>">
+								<td> <%= entry.name %> </td>
+								<td> <%= entry.min_players %> </td>
+								<td> <%= entry.max_players %> </td>
+								<td> 
+									<% if(entry.latest_date_played) { %>
+										<%= new Date(entry.latest_date_played).toDateString() %>
+									<% } %>
+								</td>
+								<td> <%= entry.total_sessions%></td>
+								<td>
+									<a href="/edit-game/<%= entry.game_id %>" class="edit-btn">Edit</a>
+									<a href="/add-game-session?gameId=<%= entry.game_id %>&gameName=<%= encodeURIComponent(entry.name) %>" class="session-btn">Add Session</a>
+								</td>
+							</tr>
+						<% }) %>
+					</tbody>		
+				</table>
+			</div>
+		</div>
+	<% } %>
+</div>
+
+<%- include ('partials/footer.ejs') %>
