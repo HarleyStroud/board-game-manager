@@ -1,0 +1,24 @@
+<%- include ('partials/header.ejs') %>
+
+<div class="main_wrapper">
+    <div class="form_wrapper">
+        <form action="/add-game" method="post">
+            <h2>Add New Game</h2>
+            <label for="input_new_game_name">Game Name</label>
+            <input type="text" id="input_new_game_name" name="name" required autofocus>
+
+            <label for="input_new_game_min_players">Minimum Number Of Players</label>
+            <input type="number" id="input_new_game_min_players" name="min_players" required>
+
+            <label for="input_new_game_max_players">Maximum Number Of Players</label>
+            <input type="number" id="input_new_game_max_players" name="max_players" required>
+
+            <label for="input_new_game_description">Descripion (Optional)</label>
+            <input type="text" id="input_new_game_description" name="description">
+
+            <button type="submit" class="submit_btn">Add New Game</button>
+        </form>
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>
