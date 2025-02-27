@@ -1,0 +1,20 @@
+<%- include ('partials/header.ejs') %>
+
+<div class="main_wrapper">
+    <div class="form_wrapper">
+        <h2>Edit Game</h2>
+        <form action="/edit-game/<%= game.id %>" method="post">
+            <label for="name">Game Name</label>
+            <input type="text" id="input_edit_game_name" name="name" value="<%= game.name %>" required>
+            <label for="min_players">Minimum Number Of Players</label>
+            <input type="number" id="input_edit_game_min_players" name="min_players" value="<%= game.min_players %>" required>
+            <label for="max_players">Maximum Number Of Players</label>
+            <input type="number" id="input_edit_game_max_players" name="max_players" value="<%= game.max_players %>" required>
+            <label for="description">Descripion (Optional)</label>
+            <input type="text" id="input_edit_game_description" name="description" value="<%= game.game_description %>">
+            <button type="submit" class="submit_btn">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+<%- include ('partials/footer.ejs') %>

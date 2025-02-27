@@ -28,7 +28,6 @@ module.exports = {
 				console.log("Error querying game data:", err);
 				return res.redirect('/');
 			}
-            console.log("Game Data From Query:", result);
 			res.render('index.ejs', {
 				title: 'Board Games | View Games',
 				gameData: result
