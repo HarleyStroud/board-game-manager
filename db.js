@@ -7,23 +7,36 @@ const pool = mysql.createPool({
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'board_game_db',
     port: process.env.DB_PORT || 3306,
-    connectionLimit: 10
+    connectionLimit: 10,
+    waitForConnections: true,
+    queueLimit: 0
 });
 
-// Convert pool to promise-based manually (since `mysql` doesn't support it natively)
 const db = {
-    query: (sql, params) => new Promise((resolve, reject) => {
-        pool.query(sql, params, (error, results) => {
-            if (error) return reject(error);
-            resolve(results);
+    query: (sql, params = []) => {
+        return new Promise((resolve, reject) => {
+            pool.query(sql, params, (error, results) => {
+                if (error) {
+                    console.error('Database query error:', error.message);
+                    reject(error);
+                    return;
+                }
+                resolve(results);
+            });
         });
-    }),
-    close: () => new Promise((resolve, reject) => {
-        pool.end(error => {
-            if (error) return reject(error);
-            resolve();
+    },
+
+    close: () => {
+        return new Promise((resolve, reject) => {
+            pool.end((error) => {
+                if (error) {
+                    console.log('error closing db:', error);
+                    return reject(error);
+                }
+                resolve();
+            });
         });
-    })
+    }
 };
 
 module.exports = db;
