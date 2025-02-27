@@ -4,6 +4,8 @@
   "description": "A web app prototype built using Node.js, Express, EJS, and MariaDB to manage and track board games and their sessions.",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
+    "restart": "npm stop --if-present && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
