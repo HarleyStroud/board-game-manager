@@ -1,4 +1,3 @@
-const req = require('express/lib/request');
 const db = require('../db');
 module.exports = {
 	getAdd: (req, res) => {
@@ -19,7 +18,7 @@ module.exports = {
 			});
 		}
 		catch (error) {
-			console.error('Database error:', err.message);
+			console.error('Database error:', error.message);
 			return res.status(500).send('Failed to fetch game data');
 		}
 	},
@@ -33,7 +32,7 @@ module.exports = {
 			const description = req.body.description;
 
 			// Insert new game record
-			let query = "INSERT INTO games (name, min_players, max_players, game_description) VALUES (?, ?, ?, ?)";
+			const query = "INSERT INTO games (name, min_players, max_players, game_description) VALUES (?, ?, ?, ?)";
 			const result = await db.query(query, [gameName, minPlayers, maxPlayers, description]);
 
 			res.redirect('/'); 
@@ -58,7 +57,7 @@ module.exports = {
 			res.redirect('/');
 		} 
 		catch (error) {
-			console.error('Database error:', err.message);
+			console.error('Database error:', error.message);
 			return res.status(500).send('Failed to update game data');
 		}
 	}
