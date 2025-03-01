@@ -47,6 +47,19 @@
     docker compose down
     ```
 
+---
+
+## Screenshots
+
+![Image](https://github.com/user-attachments/assets/eac4e5f8-628d-4845-a1fd-4324d461641a)
+
+![Image](https://github.com/user-attachments/assets/5f135f13-e23c-4324-a12f-71526eb6311c)
+
+![Image](https://github.com/user-attachments/assets/7425936c-d7f4-4977-94a3-c99b4996cee0)
+
+![Image](https://github.com/user-attachments/assets/1f7cb825-8b82-4e00-bae0-449b87d646a2)
+
+
 ## About This Project
 
 This project was built to provide a practical way to track board games and play sessions. Beyond its functionality, it was also an opportunity to:
