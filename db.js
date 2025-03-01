@@ -3,10 +3,10 @@ const mysql = require('mysql');
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST || 'localhost',
-    user: process.env.DB_USER || 'root',
+    user: process.env.DB_USER || 'app',
     password: process.env.DB_PASSWORD || '',
     database: process.env.DB_NAME || 'board_game_db',
-    port: process.env.DB_PORT || 3306,
+    port: process.env.DB_PORT || 3307,
     connectionLimit: 10,
     waitForConnections: true,
     queueLimit: 0
