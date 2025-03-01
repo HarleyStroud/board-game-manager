@@ -1,7 +1,7 @@
+require("dotenv").config();
 const express = require('express');
 const bodyParser= require('body-parser');
 const app = express();
-const port = 3000;
 const { getHomePage} = require('./routes/index');
 const game = require('./routes/game');
 const game_session = require('./routes/game_session');
@@ -22,6 +22,7 @@ app.post('/edit-game/:id', game.postEdit);
 app.get('/add-game-session', game_session.getAdd);
 app.post('/add-game-session', game_session.postAdd);
 
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
